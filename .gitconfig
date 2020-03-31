@@ -1,0 +1,8 @@
+[user]
+	name = shrestharajat
+	email = rajat.shrestha@eydean.com
+	signingkey = 396168DDCEEABA0A
+[gpg]
+	program = gpg1
+[core]
+	editor = vim
