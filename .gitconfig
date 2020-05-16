@@ -41,3 +41,9 @@
 	sts = stash show
 	sp = stash pop
 	pushall = !git remote | xargs -L1 git push --all
+
+# [commit]
+# 	gpgsign = true
+
+# [pull]
+# 	rebase = true
