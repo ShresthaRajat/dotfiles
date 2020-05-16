@@ -5,4 +5,39 @@
 [gpg]
 	program = gpg1
 [core]
-	editor = vim
+	editor = nvim
+	excludesfile = ~/.gitignore
+[alias]
+	a = add .
+	b = branch
+	c = clone --recursive --depth 50
+	commend = commit --amend --no-edit --reset-author
+	cm = commit -m
+	cn = commit -n -m
+	cp = checkout -
+	cc = checkout -- .
+	f = fetch
+	fit = !git add -A && git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+	fnit = !git add -A && git commit -n -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+	fl = "!f() { git log --follow $1; }; f"
+	it = !git init && git commit -m "root" --allow-empty
+	l = log --decorate --pretty=oneline -n 20 --graph --abbrev-commit
+	la = log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	lp = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	mc = clone --branch=master --depth 50
+	mm = merge master
+	p = pull
+	rp = remote prune origin
+	s = status -s
+	sl = stash list
+	d = diff --cached
+	patch = !git --no-pager diff --no-color
+	git = !exec git
+	g = !exec git
+	praise = blame
+	stu = stash save -u
+	sts = stash show
+	sp = stash pop
+	pushall = !git remote | xargs -L1 git push --all
