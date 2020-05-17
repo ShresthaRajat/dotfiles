@@ -217,3 +217,6 @@ alias cpuinfo='lscpu'
  
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+# bloat index counts how much crap is in your Home
+alias bloatindex="ls -a | wc -l"
