@@ -42,3 +42,7 @@ node_modules/
 *.prof
 *.deb
 zsh/.zsh_history
+Code/*
+pulse/*
+Code/Backups/workspaces.json
+Code/GPUCache/*
