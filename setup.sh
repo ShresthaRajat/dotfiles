@@ -25,9 +25,6 @@ done
 sudo git clone https://github.com/zdharma/fast-syntax-highlighting.git /usr/share/zsh/plugins/fast-syntax-highlighting
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions
 # move ~/.zshrc to ~/.config/zsh/.zshrc
-echo "export ZDOTDIR='${XDG_CONFIG_HOME:-$HOME/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
-source $USER/.config/zsh/.zshrc
-clear
 
 #Disable default application <super>[Num] bindings and set to workspace switching
 #####################################################################################################################
@@ -78,3 +75,10 @@ figlet "SETUP ENDED!"
 
 # cp ./dotfiles/.bash_aliases .bash_aliases
 # echo "alias lsR='ls -R'" >> ~/.bash_aliases 
+
+
+echo "Please change the hardcoded username at the end of this file"
+###
+### The name is hardcoded here------------------| Change it according to your setting
+###                                             |
+echo "export ZDOTDIR='${XDG_CONFIG_HOME:-/home/rajat/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
