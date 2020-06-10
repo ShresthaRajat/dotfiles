@@ -24,6 +24,8 @@ do
 done
 sudo git clone https://github.com/zdharma/fast-syntax-highlighting.git /usr/share/zsh/plugins/fast-syntax-highlighting
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions
+# move ~/.zshrc to ~/.config/zsh/.zshrc
+echo "export ZDOTDIR='${XDG_CONFIG_HOME:-$HOME/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
 source $USER/.config/zsh/.zshrc
 clear
 
