@@ -39,3 +39,37 @@ chmod 600 /home/$USER/.ssh/mozilla_rsa
 chmod 644 /home/$USER/.ssh/mozilla_rsa.pub
 
 
+
+
+
+# Gestures for linux
+# Add user to the input group
+sudo gpasswd -a $USER input
+# After this step log out and log in to continue other steps
+
+# Gestures requires the following files:
+sudo apt-get install wmctrl python3 python3-setuptools xdotool python3-gi libinput-tools python-gobject
+
+# Install Libinput gestures:
+git clone https://github.com/bulletmark/libinput-gestures.git ~/.config/libinput_gestures
+cd ~/.config/libinput_gestures
+sudo make install
+libinput-gestures-setup autostart
+libinput-gestures-setup start
+
+# install gestures (gitlab)
+git clone https://gitlab.com/cunidev/gestures.git ~/.config/gestures
+cd ~/.config/gestures
+sudo python3 setup.py install
+
+
+
+
+
+
+# Install docker compose:
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+
