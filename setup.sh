@@ -15,7 +15,7 @@
 #####################################################################################################################
 sudo apt -y install figlet
 figlet INSTALL ESSENTIALS
-declare -a programs=("vim" "python3" "python3-pip" "zsh" "code" "chromium" "firefox" "git" "curl" "cowsay" "tree" "sl" "neofetch" "lolcat" "lm-sensors" "tlp" "gnome-tweaks" "deluge" "bleachbit" "cmake" "vlc" "cmatrix" "wmctrl" "python3-setuptools" "xdotool" "python3-gi" "libinput-tools" "python-gobject")
+declare -a programs=("vim" "python3" "python3-pip" "zsh" "code" "git" "curl" "tree" "neofetch" "lolcat" "lm-sensors" "tlp" "gnome-tweaks" "deluge" "bleachbit" "cmake" "vlc" "wmctrl" "python3-setuptools" "xdotool" "python3-gi" "libinput-tools" "python-gobject")
 
 for p in "${programs[@]}"
 do
