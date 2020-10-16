@@ -12,9 +12,9 @@ gsettings list-recursively | grep switch-to-workspace | sort
 
 
 # generate-ssh-key.sh 
-ssh-keygen -t rsa -b 4096 -N '' -C "rajat.shrestha@eydean.com" -f ~/.ssh/id_rsa
-ssh-keygen -t rsa -b 4096 -N '' -C "rajat.shrestha@eydean.com" -f ~/.ssh/github_rsa
-ssh-keygen -t rsa -b 4096 -N '' -C "rajat.shrestha@eydean.com" -f ~/.ssh/mozilla_rsa
+ssh-keygen -t rsa -b 4096 -N '' -C "shrestharajat@hotmail.com" -f ~/.ssh/id_rsa
+ssh-keygen -t rsa -b 4096 -N '' -C "shrestharajat@hotmail.com" -f ~/.ssh/github_rsa
+ssh-keygen -t rsa -b 4096 -N '' -C "shrestharajat@hotmail.com" -f ~/.ssh/mozilla_rsa
 
 # ssh-key-add.sh 
 eval "$(ssh-agent -s)"
