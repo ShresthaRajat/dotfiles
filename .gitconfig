@@ -1,9 +1,9 @@
 [user]
 	name = Rajat Shrestha
-	email = rajat.shrestha@eydean.com
-	signingkey = 396168DDCEEABA0A
+	email = shrestharajat@hotmail.com
+	signingkey = D7771B3DE5FE21EC
 [gpg]
-	program = gpg1
+	program = gpg
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
