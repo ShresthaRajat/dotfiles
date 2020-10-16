@@ -113,6 +113,7 @@ alias gits='git status'
 alias gs='git status'
 alias gp='git pull'
 alias gc='git push'
+alias g='git'
 alias r='figlet Rajat Shrestha | lolcat'
 alias nf='neofetch'
 alias nstp='netstat -tulpn'
@@ -220,3 +221,10 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 # bloat index counts how much crap is in your Home
 alias bloatindex="ls -a | wc -l"
+
+
+alias pip='pip3'
+alias python='python3'
+
+alias python2='python2'
+alias pip2='pip'
