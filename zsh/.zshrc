@@ -26,7 +26,7 @@ fi
 
 
 precmd () { vcs_info }
-PROMPT='%B%{$fg[red]%}%n%b%{$fg[white]%}@%{$fg[white]%}%M%B %{$fg[magenta]%}%~%{$reset_color%}${vcs_info_msg_0_}%f $ '
+PROMPT='%B%{$fg[yellow]%}%n%b%{$fg[white]%}@%{$fg[cyan]%}%M%B %{$fg[magenta]%}%~%{$reset_color%}${vcs_info_msg_0_}%f $ '
 
 
 setopt autocd		# Automatically cd into typed directory.
