@@ -82,3 +82,12 @@ echo "Please change the hardcoded username at the end of this file"
 ### The name is hardcoded here------------------| Change it according to your setting
 ###                                             |
 echo "export ZDOTDIR='${XDG_CONFIG_HOME:-/home/rajat/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
+
+
+figlet "cloning files for gestures"
+apt install -y wmctrl python3 python3-setuptools xdotool python3-gi libinp
+ut-tools python-gobject
+git clone https://github.com/bulletmark/libinput-gestures.git ~/.config/libinput
+_gestures
+git clone https://gitlab.com/cunidev/gestures.git ~/.config/gestures
+

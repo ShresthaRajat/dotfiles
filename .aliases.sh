@@ -1,4 +1,7 @@
 # Easier navigation: .., ..., ~ and -
+
+alias his="more ~/.config/zsh/.zsh_history"
+
 alias ..="cd .."
 alias cd..="cd .."
 alias ...="cd ../.."
