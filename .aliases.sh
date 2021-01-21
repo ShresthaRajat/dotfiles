@@ -231,3 +231,8 @@ alias python='python3'
 
 alias python2='python2'
 alias pip2='pip'
+alias venv='source ~/.cache/pyvenv/venv/bin/activate'
+alias newvenv='rm -rf ~/.cache/pyvenv/venv && python -m virtualenv ~/.cache/pyvenv/venv'
+alias defws='gsettings set org.gnome.desktop.wm.preferences num-workspaces 4'
+
+
