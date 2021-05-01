@@ -108,6 +108,7 @@ alias ping='ping -c 5'
 alias fastping='ping -c 100 -s.2'
 
 # Personalized aliases
+alias tf='terraform'
 alias jn='jupyter notebook'
 alias glog='git log --oneline'
 alias nvsmi='watch -n 0.5 nvidia-smi'
