@@ -116,9 +116,4 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 source ~/.config/.aliases.sh
 source ~/.config/reformat.sh
-
-export PATH=/home/rajat/.local/bin/aws_completer:$PATH
-autoload bashcompinit && bashcompinit
-
-complete -C '/home/rajat/.local/bin/aws_completer' aws
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 4
+export PATH="$PATH:$HOME/.local/bin"
