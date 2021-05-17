@@ -12,27 +12,8 @@ npm-debug.log*
 *.bak
 *.o
 *.so
-
-# .secret.exs is where I put my secret stuff for elixir projects
-.secret.exs
-
 tmuxinator.bash
 .tmuxinator.yml
-
-# gtags generated
-GPATH
-GRTAGS
-GSYMS
-GTAGS
-tags
-tags.lock
-tags.temp
-
-# elixir specific
-*.coverdata
-tmp/
-.elixir_ls/
-
 # node
 node_modules/
 

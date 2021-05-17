@@ -41,6 +41,7 @@
 
 # Install TLP
   sudo add-apt-repository ppa:linrunner/tlp
+  
   sudo apt -y update
   sudo apt -y install tlp tlp-rdw
   sudo apt -y install acpi-call-dkms
