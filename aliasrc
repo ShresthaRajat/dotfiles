@@ -3,16 +3,53 @@
 # Use neovim for vim if present.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
+# always use color, even when piping (to awk,grep,etc)
+if gls --color > /dev/null 2>&1; then colorflag="--color"; else colorflag="-G"; fi;
+export CLICOLOR_FORCE=1
+export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\nSTATUS\t{{.Status}}\nPORTS\t{{.Ports}}\nNAMES\t{{.Names}}\n"
+
+
+# Basic commands
+alias \
+	updatey='sudo apt update && sudo apt upgrade -y' \
+	su='sudo -i' \
+	ls='gls -AFh ${colorflag} --group-directories-first' \
+	lsd='ls -l | grep "^d"' \
+	ll='ls -la' \
+	l.='ls -d .* --color=auto' \
+	lsR='ls -R' \
+	lsl='ls -al' \
+	path='echo -e ${PATH//:/\\n}' \
+    now='date +"%T"' \
+    datenow='date +"%d-%m-%Y"'\
+	-g L="| less" \
+    -g G="| grep" \
+    dsize="du -shc ./*" \
+    dirsize="du -sh" \
+    hsize="du -sh ~/" \
+    homesize="du -shc ~/*" \
+    hz="more ~/.config/zsh/.zsh_history" \
+    h='history'
+
+# Change Directory
+alias \
+	..="cd .." \
+	cd..="cd .." \
+	...="cd ../.." \
+	....="cd ../../.." \
+	.....="cd ../../../.." \
+	~="cd ~" \
+	-- -="cd -" \
+	.4='cd ../../../../' \
+	.5='cd ../../../../..'
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	bat="cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -v" \
-	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner"
+	mkd="mkdir -pv"
 
 # Colorize commands when possible.
 alias \
@@ -24,21 +61,57 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
-	g="git" \
-	trem="transmission-remote" \
-	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query"
+	defws='gsettings set org.gnome.desktop.wm.preferences num-workspaces 4' \
+	bc='bc -l' \
+	sha1='openssl sha1' \
+	mount='mount | column -t' \
+	dockerps='docker ps --format $FORMAT' \
+    dockerpsl='docker ps -l --format $FORMAT' \
+	tf='terraform'
 
-# Some other stuff
+# Network stuffs
 alias \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
-	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
-	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
+	ip="dig +short myip.opendns.com @resolver1.opendns.com" \
+	ping='ping -c 5' \
+	fastping='ping -c 100 -s.2' \
+    nstp='netstat -tulpn' \
+    ports='netstat -tulanp' \
+    -g GG="google.com"
+
+# Memory, CPU and GPU
+alias \
+    meminfo='free -m -l -t' \
+    psmem='ps auxf | sort -nr -k 4' \
+    psmem10='ps auxf | sort -nr -k 4 | head -10' \
+    pscpu='ps auxf | sort -nr -k 3' \
+    pscpu10='ps auxf | sort -nr -k 3 | head -10' \
+    cpuinfo='lscpu' \
+    gpumeminfo='grep -i --color memory /var/log/Xorg.0.log' \
+    nvsmi='watch -n 0.5 nvidia-smi'
+
+# Python
+alias \
+    pl='pip3 list' \
+    pip='pip3' \
+    thinkmorse='sudo modprobe ec_sys write_support=1 | sudo python ~/thinkmorse' \
+    python='python3' \
+    python2='python2' \
+    nvenv='rm -rf ~/.cache/pyvenv/venv && python -m virtualenv ~/.cache/pyvenv/venv' \
+    venv='source ~/.cache/pyvenv/venv/bin/activate' \
+    jn='jupyter notebook' \
+    flk='flake8 --statistics'
+
+# GIT STUFF
+alias \
+    push="git push" \
+    pull="git pull" \
+    undopush="git push -f origin HEAD^:master" \
+    glog='git log --oneline' \
+    gs='git status' \
+    gp='git pull' \
+    gc='git push' \
+    g='git'
