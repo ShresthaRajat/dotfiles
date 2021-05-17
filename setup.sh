@@ -1,93 +1,72 @@
-#!/bin/sh
+#!/bin/bash
 
-#####################################################################################################################
-#  ___ _   _ ____ _____  _    _     _
-# |_ _| \ | / ___|_   _|/ \  | |   | |
-#  | ||  \| \___ \ | | / _ \ | |   | |    
-#  | || |\  |___) || |/ ___ \| |___| |___ 
-# |___|_| \_|____/ |_/_/   \_\_____|_____|
-#                                        
-#  _____ ____ ____  _____ _   _ _____ ___    _    _     ____  
-# | ____/ ___/ ___|| ____| \ | |_   _|_ _|  / \  | |   / ___| 
-# |  _| \___ \___ \|  _| |  \| | | |  | |  / _ \ | |   \___ \ 
-# | |___ ___) |__) | |___| |\  | | |  | | / ___ \| |___ ___) |
-# |_____|____/____/|_____|_| \_| |_| |___/_/   \_\_____|____/ 
-#####################################################################################################################
-sudo apt -y install figlet
-figlet INSTALL ESSENTIALS
-declare -a programs=("vim" "python3" "python3-pip" "zsh" "code" "git" "curl" "tree" "neofetch" "lolcat" "lm-sensors" "tlp" "gnome-tweaks" "deluge" "bleachbit" "cmake" "vlc" "wmctrl" "python3-setuptools" "xdotool" "python3-gi" "libinput-tools" "python-gobject")
+# Install prorams
+  declare -a programs=( \
+    "vim" "python3" "python3-pip" "zsh" "code" "git" "curl" "tree" \
+    "neofetch" "lolcat" "lm-sensors" "tlp" "gnome-tweaks" "deluge" \
+    "bleachbit" "cmake" "vlc" "wmctrl" "python3-setuptools" "xdotool" \
+    "python3-gi" "libinput-tools" "python-gobject" "figlet"\
+    "apt-transport-https" "ca-certificates" "gnupg-agent" \
+    "software-properties-common" \
+  )
+  for p in "${programs[@]}"
+  do
+    echo "$p"
+    sudo apt install -y $p
+  done
+  sudo echo "export ZDOTDIR='${XDG_CONFIG_HOME:-/home/$USER/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
+  chsh -s "$(which zsh)"
 
-for p in "${programs[@]}"
-do
-   echo "$p"
-   sudo apt -y install $p
-done
-sudo git clone https://github.com/zdharma/fast-syntax-highlighting.git /usr/share/zsh/plugins/fast-syntax-highlighting
-sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions
-# move ~/.zshrc to ~/.config/zsh/.zshrc
+# Fix workspace switching
+  figlet RECONFIGURE KEY-BINDINGS
+  gsettings list-recursively | grep switch-to-application | sort
+  gsettings list-recursively | grep switch-to-workspace | sort
 
-#Disable default application <super>[Num] bindings and set to workspace switching
-#####################################################################################################################
-#  ____  _____ ____ ___  _   _ _____ ___ ____ _   _ ____  _____ 
-# |  _ \| ____/ ___/ _ \| \ | |  ___|_ _/ ___| | | |  _ \| ____|
-# | |_) |  _|| |  | | | |  \| | |_   | | |  _| | | | |_) |  _|  
-# |  _ <| |__| |__| |_| | |\  |  _|  | | |_| | |_| |  _ <| |___ 
-# |_| \_\_____\____\___/|_| \_|_|   |___\____|\___/|_| \_\_____|
-                                                              
-#  _  _________   __    ____ ___ _   _ ____ ___ _   _  ____ ____  
-# | |/ / ____\ \ / /   | __ )_ _| \ | |  _ \_ _| \ | |/ ___/ ___| 
-# | ' /|  _|  \ V /____|  _ \| ||  \| | | | | ||  \| | |  _\___ \ 
-# | . \| |___  | |_____| |_) | || |\  | |_| | || |\  | |_| |___) |
-# |_|\_\_____| |_|     |____/___|_| \_|____/___|_| \_|\____|____/ 
-#####################################################################################################################
-figlet RECONFIGURE KEY-BINDINGS
-gsettings list-recursively | grep switch-to-application | sort
-gsettings list-recursively | grep switch-to-workspace | sort
+  declare -a nums=(1 .. 9)
+  for i in $(seq 9  $END);
+  do
+    echo $i;
+    gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i', '<Ctrl>$i']"
+  done
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1', '<Ctrl>1', '<Super>Home']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4', '<Ctrl>4', '<Super>End']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Super><Shift>1', '<Super><Shift>Home']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Super><Shift>4', '<Super><Shift>End']"
 
-declare -a nums=(1 .. 9)
+# Clone files for zsh and gestures
+  sudo git clone https://github.com/zdharma/fast-syntax-highlighting.git /usr/share/zsh/plugins/fast-syntax-highlighting
+  sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions
+  sudo git clone https://github.com/bulletmark/libinput-gestures.git ~/.config/libinput_gestures
+  sudo git clone https://gitlab.com/cunidev/gestures.git ~/.config/gestures
 
-for i in $(seq 9  $END);
-do
-  echo $i;
-  gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]"
-  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i', '<Ctrl>$i']"
-done
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1', '<Ctrl>1', '<Super>Home']"
+# Install TLP
+  sudo add-apt-repository ppa:linrunner/tlp
+  sudo apt -y update
+  sudo apt -y install tlp tlp-rdw
+  sudo apt -y install acpi-call-dkms
+  sudo tlp start 
+  sudo systemctl status tlp
 
-#move apps like in i3
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Super><Shift>1', '<Super><Shift>Home']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Super><Shift>2']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Super><Shift>3']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Super><Shift>4', '<Super><Shift>End']"
+# Install Docker
+  sudo apt remove docker docker-engine docker.io containerd runc
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo apt-key fingerprint 0EBFCD88
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo apt update
+  sudo apt -y upgrade
+  sudo apt -y install docker-ce docker-ce-cli containerd.io
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+  sudo docker run hello-world
 
-gsettings list-recursively | grep switch-to-application | sort
-gsettings list-recursively | grep switch-to-workspace | sort
-
-# workspace switching
-
-
-
-# For libinput gestures and gestures app from gitlab
-sudo apt install wmctrl python3 python3-setuptools xdotool python3-gi libinput-tools python-gobject
-clear
-figlet "SETUP ENDED!" 
-
-
-# cp ./dotfiles/.bash_aliases .bash_aliases
-# echo "alias lsR='ls -R'" >> ~/.bash_aliases 
-
-
-echo "Please change the hardcoded username at the end of this file"
-###
-### The name is hardcoded here------------------| Change it according to your setting
-###                                             |
-echo "export ZDOTDIR='${XDG_CONFIG_HOME:-/home/rajat/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
-
-
-figlet "cloning files for gestures"
-apt install -y wmctrl python3 python3-setuptools xdotool python3-gi libinp
-ut-tools python-gobject
-git clone https://github.com/bulletmark/libinput-gestures.git ~/.config/libinput
-_gestures
-git clone https://gitlab.com/cunidev/gestures.git ~/.config/gestures
-
+# Install Gestures
+  cd ~/.config/libinput_gestures
+  sudo make install
+  libinput-gestures-setup autostart
+  libinput-gestures-setup start
+  cd ~/.config/gestures
+  meson build --prefix=/usr
+  ninja -C build
+  sudo ninja -C build install
