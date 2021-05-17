@@ -14,8 +14,6 @@
     echo "$p"
     sudo apt install -y $p
   done
-  sudo echo "export ZDOTDIR='${XDG_CONFIG_HOME:-/home/$USER/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
-  chsh -s "$(which zsh)"
 
 # Fix workspace switching
   figlet RECONFIGURE KEY-BINDINGS
@@ -62,6 +60,7 @@
   sudo docker run hello-world
 
 # Install Gestures
+  sudo gpasswd -a $USER input
   cd ~/.config/libinput_gestures
   sudo make install
   libinput-gestures-setup autostart
@@ -70,3 +69,14 @@
   meson build --prefix=/usr
   ninja -C build
   sudo ninja -C build install
+
+# Miscellanious stuffs
+  # fix time for dualboot with windows 10
+  timedatectl set-local-rtc 1 --adjust-system-clock
+  # change zsh configs location
+  sudo echo "export ZDOTDIR='${XDG_CONFIG_HOME:-/home/$USER/.config}/zsh'" | sudo tee -a /etc/zsh/zshenv
+  # change default shell to zsh
+  chsh -s "$(which zsh)"
+  # Install docker compose:
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
