@@ -1,0 +1,10 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.colorCustomizations": {
+        "editor.background": "#0c0c0cbb",
+        "editor.foreground": "#ffffff"
+    },
+    "window.titleBarStyle": "custom",
+    "window.doubleClickIconToClose": true,
+    "editor.tokenColorCustomizations": null
+}
