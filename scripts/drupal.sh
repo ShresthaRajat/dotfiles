@@ -1,6 +1,6 @@
 #!/bin/sh
 DRUPAL="9.1.8"
-DB_PASS="SDA*&@EHUSA"
+DB_PASS="password"
 DB_URL="something.us-east-2.rds.amazonaws.com"
 
 # Update package lists then install apache, php and their dependencies
@@ -22,7 +22,7 @@ rmdir drupal-$DRUPAL
 
 # Change requred permissions and owners
 sudo chown -R www-data:www-data /var/www/html
-sudo chmod 755 -R /var/www/html
+sudo chmod 777 -R /var/www/html
 sudo systemctl restart apache2
 
 # need to do this part manually then restart apache2
