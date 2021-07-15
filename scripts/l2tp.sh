@@ -4,10 +4,10 @@
 apt-get -y update && apt-get -y upgrade
 apt-get -y install strongswan xl2tpd libstrongswan-standard-plugins libstrongswan-extra-plugins
 
-VPN_SERVER_IP='202.79.35.199'
+VPN_SERVER_IP='gateway'
 VPN_IPSEC_PSK='y'
-VPN_USER='rajats'
-VPN_PASSWORD='tn24HxueQjv'
+VPN_USER='username'
+VPN_PASSWORD='something secret'
 
 cat > /etc/ipsec.conf <<EOF
 config setup
