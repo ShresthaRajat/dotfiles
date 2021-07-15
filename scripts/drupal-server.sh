@@ -1,4 +1,5 @@
 #!/bin/sh
+
 DRUPAL="9.1.10"
 EFS_MOUNT="/mnt/efs"
 DRUPAL_PATH="/app/drupal/efs"
@@ -24,7 +25,6 @@ mv drupal-$DRUPAL/.* .
 rmdir drupal-$DRUPAL
 rm drupal-$DRUPAL.tar.gz
 
-
 # Remove preconfigured folders and create symlink from efs mount
 rm -rf ${DRUPAL_PATH}/modules
 rm -rf ${DRUPAL_PATH}/profiles
@@ -35,15 +35,7 @@ sudo ln -s ${EFS_MOUNT}/profiles ${DRUPAL_PATH}/profiles
 sudo ln -s ${EFS_MOUNT}/sites ${DRUPAL_PATH}/sites
 sudo ln -s ${EFS_MOUNT}/themes ${DRUPAL_PATH}/themes
 
-## you need to fix the drupal connection after the above 
-## then make settings.php readonly
-
-
 # fix all permissions and restart apache2
 sudo chown -R 33:33 ${DRUPAL_PATH}
 sudo chmod 755 -R ${DRUPAL_PATH}
-sudo chmod 755 -R ${EFS_MOUNT}
-sudo chown -R 33:33 ${EFS_MOUNT}
-sudo chmod 444 -R ${EFS_MOUNT}/sites/default/settings.php
-sudo chmod 444 -R ${EFS_MOUNT}/sites/default/settings.php
 sudo systemctl restart apache2

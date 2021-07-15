@@ -115,3 +115,8 @@ alias \
     gp='git pull' \
     gc='git push' \
     g='git'
+
+alias war3="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/Warcraft\ III\ 1.26\ -IceBlitz/war3.exe"
+alias warr="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/Warcraft\ III\ 1.26\ -IceBlitz/Warcraft\ III.exe"
+alias winbox="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/winbox64.exe"
+alias tkvpm="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/winbox64.exe"
