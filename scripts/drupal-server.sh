@@ -1,7 +1,7 @@
 #!/bin/sh
 DRUPAL="9.1.10"
 EFS_MOUNT="/mnt/efs"
-DRUPAL_PATH="/var/www/html"
+DRUPAL_PATH="/app/drupal/efs"
 
 # Update package lists then install apache, php and their dependencies
 sudo apt-get update
