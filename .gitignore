@@ -22,8 +22,7 @@ node_modules/
 *.test
 *.prof
 *.deb
-zsh/.zsh_history
-Code/*
+zsh/.zsh_history*
 pulse/*
 google-chrome/*
 chromium/*
@@ -46,6 +45,7 @@ evolution/*
 gedit/*
 ibus/*
 gnome-control-center/*
+freezer/*
 
 gnome-initial-setup-done
 user-dirs.dirs
@@ -55,3 +55,26 @@ zsh/.zcompdump
 
 gtk-3.0/bookmarks
 BraveSoftware
+
+###
+Microsoft/
+QtProject.conf
+appimagelauncher.cfg
+autostart/*
+configstore/*
+eog/*
+freerdp/*
+gestures/*
+libinput/*
+libinput_gestures/*
+monitors.xml
+monitors.xml~
+obs-studio/*
+remmina/*
+systemd/*
+teams/*
+teamviewer/*
+vlc/*
+filezilla/*
+evince/*
+Code/**/*

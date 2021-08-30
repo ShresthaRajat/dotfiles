@@ -1,10 +1,30 @@
 {
-    "window.zoomLevel": 1,
     "workbench.colorCustomizations": {
         "editor.background": "#0c0c0cbb",
         "editor.foreground": "#ffffff"
     },
     "window.titleBarStyle": "custom",
     "window.doubleClickIconToClose": true,
-    "editor.tokenColorCustomizations": null
+    "editor.tokenColorCustomizations": null,
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "window.zoomLevel": 1,
+    "azure.resourceFilter": [
+        "fe6cf875-1220-4c5e-be71-099fdd5093f1/cd5b2ec0-6f42-4380-9aae-cd7f3b37c74d",
+        "7524465d-d9da-4d38-90b6-fecb4c34fae9/e092e094-9d53-4e8e-86bc-60b676d36996"
+    ]
 }

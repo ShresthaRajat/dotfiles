@@ -114,3 +114,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 source ~/.config/aliasrc
 export PATH="$PATH:$HOME/.local/bin"
+
+# export NVM_DIR="/home/rajat/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
