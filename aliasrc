@@ -22,8 +22,6 @@ alias \
 	path='echo -e ${PATH//:/\\n}' \
     now='date +"%T"' \
     datenow='date +"%d-%m-%Y"'\
-	-g L="| less" \
-    -g G="| grep" \
     dsize="du -shc ./*" \
     dirsize="du -sh" \
     hsize="du -sh ~/" \
@@ -66,6 +64,7 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	defws='gsettings set org.gnome.desktop.wm.preferences num-workspaces 4' \
+	defws6='gsettings set org.gnome.desktop.wm.preferences num-workspaces 6' \
 	bc='bc -l' \
 	sha1='openssl sha1' \
 	mount='mount | column -t' \
@@ -79,8 +78,13 @@ alias \
 	ping='ping -c 5' \
 	fastping='ping -c 100 -s.2' \
     nstp='netstat -tulpn' \
-    ports='netstat -tulanp' \
-    -g GG="google.com"
+    ports='netstat -tulanp'
+
+# Global Aliases
+alias -g GG="google.com"
+alias -g L="| less" \
+alias -g G="| grep" \
+alias -g W="watch -n 1"
 
 # Memory, CPU and GPU
 alias \
@@ -120,3 +124,26 @@ alias war3="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/Warcraft\ II
 alias warr="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/Warcraft\ III\ 1.26\ -IceBlitz/Warcraft\ III.exe"
 alias winbox="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/winbox64.exe"
 alias tkvpm="wine /mnt/D8E4A78FE4A76F06/Program\ Files\ \(Portable\)/winbox64.exe"
+
+alias GetRunningInstances="aws ec2 describe-instances   --filter \"Name=instance-state-name,Values=running\"   --query \"Reservations[*].Instances[*].[ Tags[?Key=='Name'].Value|[0], PrivateIpAddress, InstanceId]\"   --output table --region $1"
+
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgpa='kubectl get pods --all-namespaces=true'
+alias kgs='kubectl get svc'
+alias kgsa='kubectl get svc --all-namespaces=true'
+alias kgsp='kubectl get svc,pod'
+alias kgspa='kubectl get svc,pod --all-namespaces=true'
+alias kgi='kubectl get ingress'
+alias kgia='kubectl get ingress --all-namespaces=true'
+alias kga='kubectl get pods,svc,ingress'
+alias kgaa='kubectl get pods,svc,ingress --all-namespaces=true'
+alias mks="echo '\n\n\033[4;33m Current status of Minikube \033[0m' && minikube status"
+alias mkss="echo '\n\n\033[4;33m Enabled Addons \033[0m' && minikube addons list | grep STATUS && minikube addons list | grep enabled"
+alias mkd="minikube dashboard"
+alias mki="minikube ip"
+
+
+acs() {
+    apt-cache search $1 | grep $2
+}
