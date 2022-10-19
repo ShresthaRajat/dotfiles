@@ -77,3 +77,5 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # enable autocompletion for kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+source ~/.ssh/keyconf
