@@ -60,7 +60,7 @@ BraveSoftware
 Microsoft/
 QtProject.conf
 appimagelauncher.cfg
-autostart/*
+# autostart/*
 configstore/*
 eog/*
 freerdp/*
@@ -78,3 +78,20 @@ vlc/*
 filezilla/*
 evince/*
 Code/**/*
+helm/*
+flutter/*
+lutris/*
+RStudio/*
+rstudio/*
+obsidian/*
+packer/*
+menu/*
+cef_user_data/*
+grammarly-languageserver/*
+menus/*
+autostart/*
+
+
+zsh/.zcompdump.pop-os.207568
+yelp/yelp.cfg
+pop-system-updater/config.ron
