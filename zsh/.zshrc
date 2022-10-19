@@ -1,7 +1,8 @@
 # Rajat's config for the Zoomer Shell burrowed from luke smith
 
-# Enable colors and change prompt:
-autoload -U colors && colors	# Load colors
+# Enable colors
+autoload -U colors && colors
+# 
 setopt prompt_subst
 
 # Git stauts indicator
@@ -22,7 +23,7 @@ fi
 }
 precmd () { vcs_info }
 
-# use custom prompt with the git status indicator
+# use custom prompt (git status indicator)
 PROMPT='%B%{$fg[yellow]%}%n%b%{$fg[white]%}@%{$fg[cyan]%}%M%B %{$fg[magenta]%}%~%{$reset_color%}${vcs_info_msg_0_}%f $ '
 
 # Automatically cd into typed directory.
@@ -43,7 +44,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# Edit line in vim with ctrl-e:
+# Edit line in vim ctrle:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
