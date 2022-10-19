@@ -12,9 +12,34 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 
 # minikube commands
-minikube start
+
+# basic info
+minikube version
+minikube status
+minikube ip
+minikube addons list
 minikube dashboard
 
-# kubectl commands
-kubectl version
-kubectl cluster-info
+# cluster(container) create/stop/destroy
+minikube start
+minikube stop
+minikube delete
+
+# enable/view/disable addons
+minikube addons enable ingress
+minikube addons enable dashboard
+minikube addons enable metrics-server
+minikube addons disable ingress
+minikube addons list
+minikube addons list | grep STATUS && minikube addons list | grep enabled
+
+# use minikube kubectl
+minikube kubectl
+minikube kubectl -- get pods -At
+
+# get 
+minikube service hello-minikube1 --url
+minikube service hello-minikube1 -n demo --url 
+
+# tunnel creation
+minikube tunnel
