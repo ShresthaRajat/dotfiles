@@ -26,5 +26,25 @@
     "azure.resourceFilter": [
         "fe6cf875-1220-4c5e-be71-099fdd5093f1/cd5b2ec0-6f42-4380-9aae-cd7f3b37c74d",
         "7524465d-d9da-4d38-90b6-fecb4c34fae9/e092e094-9d53-4e8e-86bc-60b676d36996"
-    ]
+    ],
+    "debug.javascript.autoAttachFilter": "smart",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "explorer.confirmDelete": false,
+    "[nginx]": {
+        "editor.defaultFormatter": "ahmadalli.vscode-nginx-conf"
+    },
+    "latex-workshop.view.pdf.viewer": "tab",
+    "thunder-client.codeSnippetLanguage": "cs-httpclient",
+    "window.zoomLevel": 1,
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "editor.selectionClipboard": false,
+    "git.suggestSmartCommit": false
 }
