@@ -1,3 +1,6 @@
+#!/bin/sh
+# kubectl commands
+
 # get details about cluster
 kubectl version
 kubectl cluster-info

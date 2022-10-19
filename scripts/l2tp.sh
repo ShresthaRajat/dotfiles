@@ -1,5 +1,5 @@
-# Requirements
-# debian/ubuntu
+#!/bin/sh
+# setup for l2tp vpn in debian/ubuntu
 
 apt-get -y update && apt-get -y upgrade
 apt-get -y install strongswan xl2tpd libstrongswan-standard-plugins libstrongswan-extra-plugins
