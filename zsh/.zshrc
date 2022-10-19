@@ -1,5 +1,3 @@
-bindkey -e
-
 # Rajat's config for the Zoomer Shell burrowed from luke smith
 
 # Enable colors and change prompt:
@@ -27,19 +25,16 @@ precmd () { vcs_info }
 # use custom prompt with the git status indicator
 PROMPT='%B%{$fg[yellow]%}%n%b%{$fg[white]%}@%{$fg[cyan]%}%M%B %{$fg[magenta]%}%~%{$reset_color%}${vcs_info_msg_0_}%f $ '
 
+# Automatically cd into typed directory.
+setopt autocd		
 
-setopt autocd		# Automatically cd into typed directory.
-stty stop undef		# Disable ctrl-s to freeze terminal.
+# Disable ctrl-s to freeze terminal.
+stty stop undef		
 
 # History in conf/zsh/zhistory directory:
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.config/zsh/.zsh_history
-
-# Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliases" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliases"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -47,6 +42,10 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # vi mode
 bindkey -v
@@ -58,42 +57,22 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-# bind Ctrl+A to terminal calculator
+# bind Ctrl+A to enter terminal calculator
 bindkey -s '^a' 'bc -l\n'
-
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
 
 # Load syntax highlighting and zsh auto suggestions; should be last.
 # download these modules in usr/share/plugins/
 # sudo mkdir /usr/share/zsh/plugins
 # sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions
 # sudo git clone https://github.com/zdharma/fast-syntax-highlighting.git /usr/share/zsh/plugins/fast-syntax-highlighting
-
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 
 
+# Load aliases
 source ~/.config/aliasrc
-export PATH="$PATH:$HOME/.local/bin"
-
-# export NVM_DIR="/home/rajat/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # add PATH
-export PATH=$PATH:$HOME/.pulumi/bin
-export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$HOME/.local/bin"
 
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(ssh-agent -s)"
-
-
-
+# enable autocompletion for kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
