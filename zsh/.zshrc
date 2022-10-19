@@ -2,7 +2,7 @@
 
 # Enable colors
 autoload -U colors && colors
-# 
+# set prompt
 setopt prompt_subst
 
 # Git stauts indicator
