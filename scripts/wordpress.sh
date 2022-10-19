@@ -1,4 +1,7 @@
 #!/bin/bash -e
+# Simple script to install a wordpress server
+# userdata
+
 clear
 echo "============================================"
 echo "Dependencies Installtion"

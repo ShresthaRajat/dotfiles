@@ -1,4 +1,7 @@
 #!/bin/sh
+# Simple script to install/configure a base drupal server with apache, php, and mysql
+# userdata
+
 DRUPAL="9.1.8"
 DB_PASS="password"
 DB_URL="something.us-east-2.rds.amazonaws.com"

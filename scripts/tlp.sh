@@ -1,4 +1,5 @@
 #!/bin/sh
+# battery controll repository
 
 # Install TLP
 sudo add-apt-repository ppa:linrunner/tlp

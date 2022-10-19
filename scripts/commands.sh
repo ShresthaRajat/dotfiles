@@ -1,4 +1,5 @@
 #!/bin/sh
+# Msic commands 
 
 # set zsh as the default shell requies session to be restarted
     chsh -s $(which zsh)

@@ -1,4 +1,5 @@
 # !/bin/sh
+# runs some script on a remote machine via ssh
 
 ssh -i ~/.ssh/rsa_server/drupal_rsa root@m.shrestharajat.com << EOL
 # !/bin/sh

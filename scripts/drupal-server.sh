@@ -1,4 +1,6 @@
 #!/bin/sh
+# A more complex drupal setup
+# userdata
 
 DRUPAL="9.1.10"
 EFS_MOUNT="/mnt/efs"

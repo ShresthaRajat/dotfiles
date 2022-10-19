@@ -1,4 +1,5 @@
 #!/bin/sh
+# to clear docker resources
 
 
 docker system prune
