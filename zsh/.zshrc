@@ -10,14 +10,14 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' stagedstr 'M' 
 zstyle ':vcs_info:*' unstagedstr 'M' 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' actionformats '%F{5}(%F{2}%b%F{3}|%F{1}%a%F{5})%f '
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats \
   '%F{5}%F{2}(%b)%F{5} %F{2}%c%F{3}%u%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:*' enable git 
 +vi-git-untracked() {
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-  [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
+  [[ $(git ls-files --other --no-empty-directory --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
   hook_com[unstaged]+='%F{1}??%f'
 fi
 }
@@ -25,6 +25,9 @@ precmd () { vcs_info }
 
 # use custom prompt (git status indicator)
 PROMPT='%B%{$fg[yellow]%}%n%b%{$fg[white]%}@%{$fg[cyan]%}%M%B %{$fg[magenta]%}%~%{$reset_color%}${vcs_info_msg_0_}%f $ '
+
+# # Show time on the right side of the screen
+export RPROMPT='%t'
 
 # Automatically cd into typed directory.
 setopt autocd		
